@@ -1,4 +1,4 @@
-/*
+    /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -19,17 +19,17 @@ public class Practica1 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         double res = 0;
+        String numero1;
         String operacion;
         boolean comprobar = false;
 
         do {    
-            String numero1;
             do {
                 System.out.println("\n Introdueix el primer numero. ");
                 numero1 = sc.nextLine();
             } while (!numero1.matches("[+-]?[\\d]*[.]?[\\d]+"));
             double nume1 = Double.parseDouble(numero1);
-            double n1 = new Double(numero1);
+            double n1 = Double.parseDouble(numero1);
 
             do {
                 System.out.println("\n Operació? (Indica el signe)");
@@ -58,7 +58,7 @@ public class Practica1 {
                 comprobar = true;
                 switch (operacion) {
                     case "+":
-                        res = n2 + n2;
+                        res = n1 + n2;
                         break;
                     case "-":
                         res = n1 - n2;
