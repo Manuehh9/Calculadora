@@ -1,4 +1,4 @@
-    /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -19,11 +19,11 @@ public class Practica1 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         double res = 0;
-        String numero1;
+        String numero1, numero2;
         String operacion;
         boolean comprobar = false;
 
-        do {    
+        do {
             do {
                 System.out.println("Introdueix el primer numero. ");
                 numero1 = sc.nextLine();
@@ -32,21 +32,15 @@ public class Practica1 {
             double n1 = Double.parseDouble(numero1);
 
             do {
-                System.out.println("Operació? (Indica el signe)");
-                System.out.println(" + sumar \n - restar \n"
-                        + " x multiplicar \n / dividir \n * elevar primer num al segon num."
-                        + "\n % residu");
+                mostrarMenu();
+
                 operacion = sc.nextLine();
-                if (operacion.equals("+") || operacion.equals("-") || operacion.equals("x")
+
+                comprobar = operacion.equals("+") || operacion.equals("-") || operacion.equals("x")
                         || operacion.equals("X") || operacion.equals("/") || operacion.equals("%")
-                        || operacion.equals("*")) {
-                    comprobar = true;
-                } else {
-                    comprobar = false;
-                }
+                        || operacion.equals("*");
             } while (comprobar != true);
 
-            String numero2;
             do {
                 System.out.println("Introdueix el segon numero.");
                 numero2 = sc.nextLine();
@@ -104,17 +98,31 @@ public class Practica1 {
                 comprobar = true;
                 operacion = sc.nextLine();
 
-                switch (operacion) {
-                    case "s":
-                    case "S":
-                    case "n":
-                    case "N":
-                        break;
-                    default:
-                        System.err.println("\n Error, posa un valor vàlid. \n");
-                        comprobar = false;
-                }
+                comprobarContinuar(operacion, comprobar);
+                
             } while (comprobar != true);
         } while (operacion.equals("s") || operacion.equals("S"));
+    }
+
+    public static void mostrarMenu() {
+        System.out.println("Operació? (Indica el signe)");
+        System.out.println(" + sumar \n - restar \n"
+                + " x multiplicar \n / dividir \n * elevar primer num al segon num."
+                + "\n % residu");
+    }
+
+    private static boolean comprobarContinuar(String operacion, boolean comprobar) {
+        switch (operacion) {
+            case "s":
+            case "S":
+            case "n":
+            case "N":
+                break;
+            default:
+                System.err.println("\n Error, posa un valor vàlid. \n");
+                comprobar = false;
+        }
+        
+        return comprobar;
     }
 }
